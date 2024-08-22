@@ -29,5 +29,25 @@
 				i++;
 			}
 		}
+
+		/// <summary>
+		/// Протестировать последовательность, реализованную через yield.
+		/// </summary>
+		/// <param name="count"></param>
+		[Theory]
+		[InlineData(7)]
+		[InlineData(9)]
+		internal void TestSequenceCreator(int count)
+		{
+			var sequence = SequenceCreator.Create(count);
+
+			int i = 0;
+			foreach (var item in sequence)
+			{
+				Assert.Equal(Sample[i], item);
+
+				i++;
+			}
+		}
 	}
 }
